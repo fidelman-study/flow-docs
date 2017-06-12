@@ -1,23 +1,24 @@
 // @flow
-class MyClass<A, B, C> {
-    constructor(arg1: A, arg2: B, arg3: C) {
-    }
+type MyObject = {
+    foo: number,
+    bar: boolean,
+    baz: string
+};
 
-    method(value: string): number {
-        return +value;
-    }
-}
+const val: MyObject = {
+    foo: 1,
+    bar: true,
+    baz: 'hi'
+};
 
-let myInstance: MyClass<number, string, boolean> = new MyClass(1, '1', true);
+type NewObject<A, B, C> = {
+    foo: A,
+    bar: B,
+    baz: C
+};
 
-
-
-class Class {
-    props: number = 1;
-
-    constructor(number: number) {
-        this.props = number;
-    }
-}
-
-const hi = new Class(1);
+const value: NewObject<number, boolean, string> = {
+    foo: 1,
+    bar: true,
+    baz: false // Error!
+};
