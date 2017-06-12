@@ -1,13 +1,34 @@
 // @flow
-const concat = (a: string, b: string): string => a + b;
-concat('1', '2');
+const obj: {
+    foo: number,
+    bar: boolean,
+    baz: string,
+    blue?: boolean
+} = {
+    foo: 1,
+    bar: true,
+    baz: 'three'
+};
 
-function method(str: string, bool?: boolean, ...nums: Array<number>): void {
+const x = obj.hi; // Error!
+obj.blue = false;
+
+
+function method(obj: { foo: string }) {
     // ...
 }
-method('1', true, 1, 2, 3);
+method({
+    foo: "test",
+    bar: 42
+});
 
-function error(callback: (error: Error | null, value: string | null) => void) {
+function method2(obj: {| foo: string |}) {
     // ...
 }
-error(() => {});
+method2({
+    foo: "test",
+    bar: 42 // Error!
+});
+
+var o: { [user_id: number]: string } = {};
+obj[1] = "Julia";
