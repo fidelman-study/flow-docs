@@ -1,34 +1,15 @@
 // @flow
-const obj: {
-    foo: number,
-    bar: boolean,
-    baz: string,
-    blue?: boolean
-} = {
-    foo: 1,
-    bar: true,
-    baz: 'three'
-};
+const Arr1: Array<number> = [1, 2, 3];
+const Arr2: Array<boolean> = [1, 2, 3];
 
-const x = obj.hi; // Error!
-obj.blue = false;
+const arr1: number[] = [1, 2, 3];
+const arr2: { foo: string }[] = [{ foo: 'hi' }];
 
+const arr3: ?number[] = [1, 2];
 
-function method(obj: { foo: string }) {
-    // ...
+let array: number[] = [0, 1, 2];
+let value: number | void = array[1];
+
+if (value !== undefined) {
+    // number
 }
-method({
-    foo: "test",
-    bar: 42
-});
-
-function method2(obj: {| foo: string |}) {
-    // ...
-}
-method2({
-    foo: "test",
-    bar: 42 // Error!
-});
-
-var o: { [user_id: number]: string } = {};
-obj[1] = "Julia";
