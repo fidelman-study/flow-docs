@@ -1,6 +1,26 @@
 // @flow
-const method = (value: 2, name: "success" | "warning" | "danger") => {
-  return { value, name };
-};
+function method<T>(value: T): T {
+  return value; // return the same type as argument
+}
+method(1);
 
-method(2, "warning");
+function getTypeOf(value: mixed): string {
+  return typeof value;
+}
+getTypeOf(1);
+
+function stringify(value: mixed) {
+    // $ExpectError
+    return "" + value; // Error!
+}
+stringify("foo");
+
+function stringify1(value: mixed) {
+    if (typeof value === 'string') {
+        return "" + value; // Works!
+    } else {
+        return "";
+    }
+}
+stringify1("foo");
+
