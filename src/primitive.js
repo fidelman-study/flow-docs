@@ -1,6 +1,6 @@
 // @flow
-const method = (x: number, y: string, z: boolean, w: null, o: void, k: ?number) => {
-  return { x, y, z, w, o, k };
+const method = (value: 2, name: "success" | "warning" | "danger") => {
+  return { value, name };
 };
 
-method(1, '1', true, null, undefined, 1);
+method(2, "warning");
