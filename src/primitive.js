@@ -1,20 +1,5 @@
 // @flow
-function identity<T>(value: T): T {
-    return value;
-}
+type Numbers = 1 | 2;
+type Colors = 'red' | 'blue'
+type Fish = Numbers | Colors;
 
-function method(func: <T>(param: T) => T) {}
-
-class Item<T> {
-    prop: T;
-
-    constructor(param: T) {
-        this.prop = param;
-    }
-
-    method(): T {
-        return this.prop;
-    }
-}
-
-const number = new Item(1);
