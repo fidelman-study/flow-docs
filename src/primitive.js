@@ -1,38 +1,23 @@
 // @flow
-/*::
- type MyAlias = {
- foo: number,
- bar: boolean,
- baz: string,
- };
- */
+const countries = {
+  US: "United States",
+  IT: "Italy",
+  FR: "France"
+};
 
-function method(value /*: MyAlias */) /*: boolean */ {
-  return value.bar;
+type Country = $Keys<typeof countries>;
+
+const italy: Country = 'IT';
+const nope: Country = 'nope'; // 'nope' is not a Country
+
+type Props = { name: string, age: number };
+type DefaultProps = { age: number };
+type RequiredProps = $Diff<Props, DefaultProps>;
+
+function setProps(props: RequiredProps) {
+  // ...
 }
 
-method({ foo: 1, bar: true, baz: "oops" });
-
-/*::
- type Foo = {
-   foo: number,
-   bar: boolean,
-   baz: string
- };
- */
-
-class MyClass {
-  /*:: prop: string; */
-}
-
-/*flow-include
- type Foo1 = {
-   foo: number,
-   bar: boolean,
-   baz: string
- };
- */
-
-class MyClass1 {
-  /*flow-include prop: string; */
-}
+setProps({ name: 'foo' });
+setProps({ name: 'foo', age: 42, baz: false }); // you can pass extra props too
+setProps({ age: 42 }); // error, name is required
